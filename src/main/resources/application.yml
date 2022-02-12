@@ -1,0 +1,54 @@
+server:
+  port: 8080
+#  servlet:
+#    context-path: /main
+
+spring:
+  application:
+    name: tictactoe-app 
+  logging:
+    pattern:
+      console: "%clr(%d{yyyy-MM-dd HH:mm:ss}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr([${springAppName:-},%X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{X-Span-Export:-}]){yellow} %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
+    level:
+      org.springframework: WARN
+      org.hibernate: WARN
+  jpa:
+    # show-sql: true
+    hibernate:
+      ddl-auto: update
+      # hbm2ddl:
+      #   auto: update
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+jwt:
+  secret: BvPHGM8C0ia4uOuxxqPD5DTbWC9F9TWvPStp3pb7ARo0oK2mJ3pd3YG4lxA9i8bj6OTbadwezxgeEByY
+  expiration: 3600
+
+#  metrics:
+#    distribution:
+#      percentiles-histogram.http.server.requests: false
+#      percentiles.http.server.requests: 0.5, 0.9, 0.95, 0.99, 0.999
+#      sla.http.server.requests: 500ms, 2000ms
+
+#eureka:
+#  instance:
+#    prefer-ip-address: true
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    serviceUrl:
+#      defaultZone: http://hrayfi-discovery:8761/eureka
+
+#ribbon:
+#  eureka:
+#    enabled: true
+
+jackson:
+    property-naming-strategy: SNAKE_CASE
